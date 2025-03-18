@@ -6,6 +6,8 @@
     "module": "ESNext",
     "moduleDetection": "force",
     "jsx": "react-jsx",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "allowJs": true,
 
     // Bundler mode

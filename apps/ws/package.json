@@ -3,6 +3,10 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build":"tsc -b",
+    "dev":"node ./dist/index.js"
+  },
   "devDependencies": {
     "@types/bun": "latest"
 },
@@ -10,8 +14,6 @@
     "typescript": "^5"
 },
 "dependencies": {
-    "@types/ws": "^8.18.0",
-    "db": "*",
-    "ws": "^8.18.1"
+    "db": "*"
   }
 }

@@ -7,17 +7,19 @@ Bun.serve({
         if(server.upgrade(req)){
             return;
         }
+        //@ts-ignore
         return new Response("Upgrade failed!", {status:"500"})
     },
     websocket:{
-        message(websocket, message){
+        //@ts-ignore
+        message(ws, message){
             prismaClient.user.create({
                 data:{
                     username:Math.random().toString(),
                     password:Math.random().toString()
                 }
             })
-            WebSocket.
-        }
-    }
+            ws.send(message)
+        },
+    },
 })
