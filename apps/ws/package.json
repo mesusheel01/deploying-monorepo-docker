@@ -4,9 +4,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build":"tsc -b",
-    "dev":"node ./dist/index.js"
-  },
+    "dev":"bun index.ts",
+    "migrate":"bun run migrate"
+
+},
   "devDependencies": {
     "@types/bun": "latest"
 },

@@ -4,9 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "run":"node ./dist/index.js",
-    "build":"tsc -b"
-  },
+  "dev":"bun index.ts"
+},
   "devDependencies": {
     "@types/bun": "latest"
   },
