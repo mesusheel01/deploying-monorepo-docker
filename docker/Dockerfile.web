@@ -1,19 +1,23 @@
-from oven/bun:1
+FROM oven/bun:1
 
 WORKDIR /web
 
-COPY . .
+ARG DATABASE_URL
+
 COPY ./package.json ./package.json
 COPY ./bun.lock ./bun.lock
+
+
+COPY ./package.json ./package.json
 COPY ./turbo.json ./turbo.json
 
 COPY ./apps/backend  ./apps/backend
 
-RUN bun install
-RUN bun run migrate
-RUN bun run build
 
-COPY . .
+RUN bun install
+RUN bun run db:generate
+RUN DATABASE_URL=${DATABASE_URL} bun run build
+
 
 EXPOSE 3000
 
