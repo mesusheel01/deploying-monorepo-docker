@@ -21,4 +21,4 @@ RUN DATABASE_URL=${DATABASE_URL} bun run build
 
 EXPOSE 3000
 
-CMD ["bun","dev", "index.ts"]
+CMD ["bun","run", "index.ts"]
