@@ -1,0 +1,30 @@
+name: Deploy the backend
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./docker/Dockerfile.web
+          build-args:
+            - DATABASE_URL=${{ secrets.DATABASE_URL }}
+          push: true
+          tags: mesusheel01/todo-app-frontend:${{ github.sha }}
